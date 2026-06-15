@@ -5,7 +5,7 @@ import { ArrowUpRight, Minus, Plus } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
-import { ClipLine } from "@/components/KineticText";
+import { SectionHeader } from "@/components/SectionHeader";
 import { featuredProjects } from "@/data/featuredProjects";
 import { profile } from "@/data/profile";
 
@@ -23,24 +23,22 @@ export function ProjectDossiers() {
       id="projects"
       className="scroll-mt-16 bg-[#d8ff55] text-[#080908]"
     >
-      <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28">
-        <div className="grid gap-8 border-b-2 border-black pb-10 lg:grid-cols-[0.42fr_1fr_auto] lg:items-end">
-          <p className="font-mono text-xs font-bold">PROJECTS / 03</p>
-          <h2 className="font-display text-6xl font-black leading-[0.9] md:text-9xl">
-            <ClipLine>
-              Selected <span className="text-black/38">work.</span>
-            </ClipLine>
-          </h2>
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-12 w-fit items-center gap-3 bg-black px-5 py-3 text-sm font-bold text-white transition hover:bg-[#db0066] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black lg:justify-self-end"
-          >
-            All projects on GitHub
-            <ArrowUpRight size={17} />
-          </a>
-        </div>
+      <div className="mx-auto max-w-[1600px] px-5 py-24 md:px-8 md:py-32">
+        <SectionHeader
+          eyebrow="SELECTED PROJECTS / 03"
+          borderClassName="border-black"
+          action={
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 w-fit items-center gap-3 bg-black px-5 py-3 text-sm font-bold text-white transition hover:bg-[#db0066] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+            >
+              All projects on GitHub
+              <ArrowUpRight size={17} />
+            </a>
+          }
+        />
 
         <div className="border-b-2 border-black">
           {topProjects.map((project, index) => {

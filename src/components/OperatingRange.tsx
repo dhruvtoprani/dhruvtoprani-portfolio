@@ -1,5 +1,6 @@
 import { ClipLine, StaggerWords } from "@/components/KineticText";
 import { Reveal } from "@/components/Reveal";
+import { SectionHeader } from "@/components/SectionHeader";
 
 export function OperatingRange() {
   return (
@@ -8,14 +9,7 @@ export function OperatingRange() {
       className="scroll-mt-16 bg-[#eef0ea] px-5 py-24 text-[#080908] md:px-8 md:py-32"
     >
       <div className="mx-auto max-w-[1600px]">
-        <Reveal className="grid gap-8 border-b-2 border-black pb-12 lg:grid-cols-[0.42fr_1fr] lg:items-end">
-          <p className="font-mono text-sm font-black">ABOUT / 01</p>
-          <h2 className="font-display text-6xl font-black leading-[0.9] md:text-9xl">
-            <ClipLine>
-              About Me<span className="text-black/35">.</span>
-            </ClipLine>
-          </h2>
-        </Reveal>
+        <SectionHeader eyebrow="ABOUT ME / 01" borderClassName="border-black" />
 
         <Reveal className="border-b-2 border-black py-16 md:py-24">
           <p className="inline-flex bg-[#ce1126] px-3 py-2 font-mono text-xs font-black text-white">

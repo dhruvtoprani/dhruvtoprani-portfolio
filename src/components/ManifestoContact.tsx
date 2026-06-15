@@ -1,7 +1,7 @@
 import { ArrowUpRight, Mail } from "lucide-react";
 
-import { ClipLine } from "@/components/KineticText";
 import { Reveal } from "@/components/Reveal";
+import { SectionHeader } from "@/components/SectionHeader";
 import { profile } from "@/data/profile";
 
 export function ManifestoContact() {
@@ -11,16 +11,11 @@ export function ManifestoContact() {
       className="scroll-mt-16 bg-[#b9004d] px-5 pb-8 pt-24 text-white md:px-8 md:pb-10 md:pt-32"
     >
       <div className="mx-auto max-w-[1600px]">
-        <Reveal className="grid gap-8 border-b-2 border-white pb-12 lg:grid-cols-[0.42fr_1fr] lg:items-end">
-          <p className="font-mono text-sm font-black text-[#d8ff55]">
-            CONTACT / 04
-          </p>
-          <h2 className="font-display text-6xl font-black leading-[0.9] md:text-9xl">
-            <ClipLine>
-              Let&apos;s <span className="text-white/38">talk.</span>
-            </ClipLine>
-          </h2>
-        </Reveal>
+        <SectionHeader
+          eyebrow="CONTACT / 04"
+          borderClassName="border-white"
+          eyebrowClassName="text-[#d8ff55]"
+        />
 
         <Reveal className="mt-16 grid gap-12 lg:grid-cols-[0.42fr_1fr]">
           <p className="max-w-md text-2xl font-bold leading-9 text-white/72">

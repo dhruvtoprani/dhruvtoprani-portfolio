@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 
-import { ClipLine } from "@/components/KineticText";
 import { Reveal } from "@/components/Reveal";
+import { SectionHeader } from "@/components/SectionHeader";
 import { experiences } from "@/data/experience";
 import { profile } from "@/data/profile";
 
@@ -12,23 +12,22 @@ export function ExperienceLedger() {
       className="scroll-mt-16 bg-[#4b00b5] px-5 py-24 text-white md:px-8 md:py-32"
     >
       <div className="mx-auto max-w-[1600px]">
-        <Reveal className="grid gap-8 border-b-2 border-white/55 pb-12 lg:grid-cols-[0.42fr_1fr_auto] lg:items-end">
-          <p className="font-mono text-sm font-black text-[#ffd84d]">
-            EXPERIENCE / 02
-          </p>
-          <h2 className="font-display text-5xl font-black leading-[0.9] text-[#ffd84d] md:text-7xl xl:text-8xl">
-            <ClipLine>Selected experiences.</ClipLine>
-          </h2>
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-12 w-fit items-center gap-3 border border-[#ffd84d] px-5 py-3 text-sm font-black text-[#ffd84d] transition-colors hover:bg-[#ffd84d] hover:text-[#4b00b5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ffd84d] lg:justify-self-end"
-          >
-            LinkedIn
-            <ArrowUpRight size={17} />
-          </a>
-        </Reveal>
+        <SectionHeader
+          eyebrow="SELECTED EXPERIENCES / 02"
+          borderClassName="border-white/55"
+          eyebrowClassName="text-[#ffd84d]"
+          action={
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 w-fit items-center gap-3 border border-[#ffd84d] px-5 py-3 text-sm font-black text-[#ffd84d] transition-colors hover:bg-[#ffd84d] hover:text-[#4b00b5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ffd84d]"
+            >
+              LinkedIn
+              <ArrowUpRight size={17} />
+            </a>
+          }
+        />
 
         <Reveal className="mt-16">
           <div>

@@ -26,7 +26,7 @@ export function ClipLine({
 
   return (
     <motion.span
-      className="block overflow-hidden pb-[0.08em]"
+      className="block overflow-hidden px-[0.04em] pb-[0.16em]"
       initial={reduceMotion ? false : "hidden"}
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
