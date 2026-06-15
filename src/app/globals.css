@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-black: #080908;
+  --color-off-white: #f7f6f1;
+  --color-soft-gray: #eef0ea;
+  --color-dark-gray: #111310;
+  --color-uae-green: #00732f;
+  --color-uae-red: #ce1126;
+  --color-neon-lime: #d8ff55;
+  --color-neon-cyan: #59f6ff;
+  --color-neon-pink: #ff3ca6;
+  --color-neon-orange: #ff7a00;
+  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    "Geist Mono", "Geist Mono Fallback", ui-monospace, SFMono-Regular,
+    monospace;
+}
+
+:root {
+  color-scheme: light;
+  background: #080908;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: #080908;
+  color: #111310;
+  font-family:
+    "Geist",
+    "Geist Fallback",
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family:
+    "Arial Black",
+    "Helvetica Neue",
+    "Geist",
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+
+.skills-marquee-track {
+  animation: skills-marquee 26s linear infinite;
+  will-change: transform;
+}
+
+.hero-spotlight::before {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      720px circle at var(--hero-x) var(--hero-y),
+      rgb(255 60 166 / 14%),
+      transparent 58%
+    ),
+    radial-gradient(
+      560px circle at 82% 76%,
+      rgb(89 246 255 / 7%),
+      transparent 64%
+    );
+  content: "";
+  pointer-events: none;
+  transition: opacity 240ms ease;
+}
+
+.hero-spotlight::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: 28%;
+  background: linear-gradient(to bottom, transparent, rgb(8 8 11 / 92%));
+  content: "";
+  pointer-events: none;
+}
+
+@keyframes skills-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+main {
+  isolation: isolate;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+::selection {
+  background: #00732f;
+  color: #ffffff;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .skills-marquee-track {
+    transform: none;
+  }
+
+  .hero-spotlight::before {
+    display: none;
+  }
+}
