@@ -67,5 +67,15 @@ export const experiences: Experience[] = [
       "Technical program leadership, systems integration, risk management, and competition operations.",
     website: "https://www.vexrobotics.com",
     tags: ["Robotics", "Program Leadership", "Integration"]
+  },
+  {
+    organization: "Leo Burnett",
+    role: "Creative Strategy Intern",
+    summary:
+      "Supported McDonald's, Takis, and Jeep campaign work, moving creative ideas from ideation through planning and launch.",
+    contribution:
+      "Creative ideation, brand planning, campaign strategy, and launch coordination.",
+    website: "https://leoburnett.com",
+    tags: ["Creative Strategy", "Brand Planning", "Campaigns"]
   }
 ];
