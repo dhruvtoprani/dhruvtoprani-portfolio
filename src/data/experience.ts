@@ -72,10 +72,10 @@ export const experiences: Experience[] = [
     organization: "Leo Burnett",
     role: "Creative Strategy Intern",
     summary:
-      "Supported McDonald's, Takis, and Jeep campaign work, moving creative ideas from ideation through planning and launch.",
+      "Supported campaigns for McDonald's, Takis, and Jeep, from creative ideas to planning, execution, and launch.",
     contribution:
       "Creative ideation, brand planning, campaign strategy, and launch coordination.",
     website: "https://leoburnett.com",
-    tags: ["Creative Strategy", "Brand Planning", "Campaigns"]
+    tags: ["GTM", "Advertising Strategy"]
   }
 ];
