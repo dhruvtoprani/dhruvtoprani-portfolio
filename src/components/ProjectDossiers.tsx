@@ -7,10 +7,9 @@ import { useState } from "react";
 
 import { SectionHeader } from "@/components/SectionHeader";
 import { featuredProjects } from "@/data/featuredProjects";
+import { profile } from "@/data/profile";
 
-const topProjects = featuredProjects.filter(
-  (project) => project.name === "DroneLab"
-);
+const topProjects = featuredProjects.slice(0, 5);
 
 export function ProjectDossiers() {
   const [openProject, setOpenProject] = useState<string | null>(null);
@@ -30,15 +29,12 @@ export function ProjectDossiers() {
           borderClassName="border-black"
           action={
             <a
-              href={
-                topProjects[0]?.github ??
-                "https://github.com/dhruvtoprani/DroneLab"
-              }
+              href={profile.github}
               target="_blank"
               rel="noreferrer"
               className="inline-flex min-h-12 w-fit items-center gap-3 bg-black px-5 py-3 text-sm font-bold text-white transition hover:bg-[#db0066] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
             >
-              DroneLab on GitHub
+              All projects on GitHub
               <ArrowUpRight size={17} />
             </a>
           }
