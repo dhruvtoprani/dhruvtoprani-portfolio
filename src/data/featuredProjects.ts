@@ -27,6 +27,27 @@ export const featuredProjects: FeaturedProject[] = [
     metricLabel: "Modeled solar capacity"
   },
   {
+    name: "DroneLab",
+    category: "Robotics / Hardware Systems",
+    hook: "Build and validate FPV drone configurations before buying parts.",
+    description:
+      "A mission-first 3D drone builder that checks part compatibility, estimates performance, and exports a bill of materials for student teams and FPV builders.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Three.js",
+      "React Three Fiber",
+      "Prisma"
+    ],
+    image: "/work/dronelab.jpg",
+    imageAlt:
+      "DroneLab 3D FPV drone builder with parts catalog, engineering report, and performance metrics",
+    metric: "11/11",
+    metricLabel: "Core systems validated",
+    github: "https://github.com/dhruvtoprani/DroneLab",
+    demo: "https://dronelab-sooty.vercel.app"
+  },
+  {
     name: "AtlasFX",
     category: "Global Systems / Data Visualization",
     hook: "A global movement map for currency shocks and macro patterns.",
