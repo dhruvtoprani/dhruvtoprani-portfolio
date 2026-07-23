@@ -14,6 +14,30 @@ export type FeaturedProject = {
 
 export const featuredProjects: FeaturedProject[] = [
   {
+    name: "Resurrect",
+    category: "AI Developer Tools / Agent Skills",
+    hook: "Decide what abandoned code deserves to live, then prove it safely.",
+    description:
+      "An intake-first agent skill and local CLI that reconstructs repository intent, diagnoses why a project stalled, chooses Revive, Rebuild, Salvage, or Archive, and prepares an approval-gated Milestone Zero on a safe comeback branch.",
+    stack: ["Node.js", "TypeScript", "Git", "GitHub CLI", "Codex", "Claude Code"],
+    metric: "4",
+    metricLabel: "Explicit product verdicts",
+    github: "https://github.com/dhruvtoprani/resurrect"
+  },
+  {
+    name: "RatRadar NYC",
+    category: "Civic Intelligence / Machine Learning",
+    hook: "Predict next-week rodent complaint surges across 177 NYC ZIP areas.",
+    description:
+      "Forecasts neighborhood complaint surges using public 311 data, XGBoost, and SHAP.",
+    stack: ["Python", "XGBoost", "SHAP", "NYC Open Data"],
+    image: "/work/ratradar-risk-map.png",
+    imageAlt:
+      "RatRadar NYC geospatial risk map showing predicted complaint surges across ZIP areas",
+    github: "https://github.com/dhruvtoprani/ratradar-nyc",
+    demo: "https://ratradar-nyc.vercel.app"
+  },
+  {
     name: "SunSight",
     category: "Sustainability / Energy",
     hook: "Estimate rooftop solar potential from an address and map region.",
@@ -74,19 +98,6 @@ export const featuredProjects: FeaturedProject[] = [
       "CivSense parametric civilization simulation dashboard with configurable scenarios",
     metric: "500",
     metricLabel: "Adaptive agents"
-  },
-  {
-    name: "RatRadar NYC",
-    category: "Civic Intelligence / Machine Learning",
-    hook: "Predict next-week rodent complaint surges across 177 NYC ZIP areas.",
-    description:
-      "Forecasts neighborhood complaint surges using public 311 data, XGBoost, and SHAP.",
-    stack: ["Python", "XGBoost", "SHAP", "NYC Open Data"],
-    image: "/work/ratradar-risk-map.png",
-    imageAlt:
-      "RatRadar NYC geospatial risk map showing predicted complaint surges across ZIP areas",
-    github: "https://github.com/dhruvtoprani/ratradar-nyc",
-    demo: "https://ratradar-nyc.vercel.app"
   },
   {
     name: "DocFlow MCP",
