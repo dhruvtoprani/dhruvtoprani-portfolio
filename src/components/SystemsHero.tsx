@@ -43,12 +43,12 @@ export function SystemsHero() {
         <Reveal className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[10px] font-bold uppercase text-white/42 md:text-xs">
           <span className="inline-flex items-center gap-2 text-[#d8ff55]">
             <CircleDot className="h-3 w-3" />
-            Open to Fall 2026 co-ops
+            Open to full-time positions May 2027
           </span>
           <span aria-hidden="true">/</span>
           <span>Product · Program · Operations</span>
           <span aria-hidden="true">/</span>
-          <span>East Lansing, MI</span>
+          <span>East Lansing, MI · Open to relocation</span>
         </Reveal>
 
         <div className="flex flex-1 flex-col justify-center py-16 md:py-20">
