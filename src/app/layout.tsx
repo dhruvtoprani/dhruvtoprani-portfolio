@@ -32,6 +32,23 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: profile.name, url: profile.siteUrl }],
   creator: profile.name,
+  icons: {
+    icon: [
+      {
+        url: "/favicon-headshot-v2.png",
+        sizes: "256x256",
+        type: "image/png"
+      }
+    ],
+    shortcut: "/favicon-headshot-v2.png",
+    apple: [
+      {
+        url: "/favicon-headshot-v2.png",
+        sizes: "256x256",
+        type: "image/png"
+      }
+    ]
+  },
   alternates: {
     canonical: "/"
   },
