@@ -126,7 +126,7 @@ export function ExperienceLedger() {
                               {experience.contribution}
                             </p>
                             {experience.details ? (
-                              <ul className="mt-5 space-y-3 text-base font-semibold leading-7 text-white/72">
+                              <ul className="mt-5 list-disc space-y-3 pl-5 text-base font-semibold leading-7 text-white/72 marker:text-[#ffd84d]">
                                 {experience.details.map((detail) => (
                                   <li key={detail}>{detail}</li>
                                 ))}

@@ -14,17 +14,6 @@ export type FeaturedProject = {
 
 export const featuredProjects: FeaturedProject[] = [
   {
-    name: "Resurrect",
-    category: "AI Developer Tools / Agent Skills",
-    hook: "Decide what abandoned code deserves to live, then prove it safely.",
-    description:
-      "An intake-first agent skill and local CLI that reconstructs repository intent, diagnoses why a project stalled, chooses Revive, Rebuild, Salvage, or Archive, and prepares an approval-gated Milestone Zero on a safe comeback branch.",
-    stack: ["Node.js", "TypeScript", "Git", "GitHub CLI", "Codex", "Claude Code"],
-    metric: "4",
-    metricLabel: "Explicit product verdicts",
-    github: "https://github.com/dhruvtoprani/resurrect"
-  },
-  {
     name: "RatRadar NYC",
     category: "Civic Intelligence / Machine Learning",
     hook: "Predict next-week rodent complaint surges across 177 NYC ZIP areas.",
@@ -85,6 +74,17 @@ export const featuredProjects: FeaturedProject[] = [
     metricLabel: "Markets monitored",
     github: "https://github.com/dhruvtoprani/atlasfx",
     demo: "https://atlasfx-zeta.vercel.app"
+  },
+  {
+    name: "Resurrect",
+    category: "AI Developer Tools / Agent Skills",
+    hook: "Decide what abandoned code deserves to live, then prove it safely.",
+    description:
+      "An intake-first agent skill and local CLI that reconstructs repository intent, diagnoses why a project stalled, chooses Revive, Rebuild, Salvage, or Archive, and prepares an approval-gated Milestone Zero on a safe comeback branch.",
+    stack: ["Node.js", "TypeScript", "Git", "GitHub CLI", "Codex", "Claude Code"],
+    metric: "4",
+    metricLabel: "Explicit product verdicts",
+    github: "https://github.com/dhruvtoprani/resurrect"
   },
   {
     name: "CivSense",

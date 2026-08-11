@@ -4,7 +4,7 @@ import { ArrowDown, ArrowUpRight, CircleDot, Quote } from "lucide-react";
 import type { CSSProperties, PointerEvent, ReactNode } from "react";
 import { useRef } from "react";
 
-import { ClipLine, StaggerWords } from "@/components/KineticText";
+import { ClipLine } from "@/components/KineticText";
 import { Reveal } from "@/components/Reveal";
 import { profile } from "@/data/profile";
 import { managerReferences } from "@/data/references";
@@ -92,43 +92,9 @@ export function SystemsHero() {
             </ClipLine>
           </h1>
 
-          <Reveal delay={0.08} className="mt-9 max-w-5xl md:mt-12">
-            <p className="text-[clamp(1.55rem,3.4vw,3.5rem)] font-semibold leading-[1.06] text-white/42">
-              <StaggerWords text="I combine" />{" "}
-              <StaggerWords
-                className="font-black text-white"
-                delay={0.07}
-                text="technical fluency,"
-              />{" "}
-              <StaggerWords
-                className="font-black text-white"
-                delay={0.14}
-                text="judgment,"
-              />{" "}
-              <StaggerWords delay={0.19} text="and" />{" "}
-              <StaggerWords
-                className="font-black text-white"
-                delay={0.23}
-                text="clear communication"
-              />{" "}
-              <StaggerWords delay={0.3} text="to" />{" "}
-              <StaggerWords
-                className="font-black text-white"
-                delay={0.33}
-                text="align teams"
-              />{" "}
-              <StaggerWords delay={0.39} text="and build" />{" "}
-              <StaggerWords
-                className="font-black text-white"
-                delay={0.45}
-                text="products users value."
-              />
-            </p>
-          </Reveal>
-
           <Reveal
-            delay={0.12}
-            className="mt-7 flex flex-wrap gap-3 md:mt-8 md:flex-nowrap"
+            delay={0.08}
+            className="mt-10 flex flex-wrap gap-3 md:mt-12 md:flex-nowrap"
           >
             <a
               href="#projects"
@@ -163,7 +129,7 @@ export function SystemsHero() {
           </Reveal>
 
           <Reveal
-            delay={0.14}
+            delay={0.12}
             className="mt-7 grid gap-x-8 gap-y-6 border-t border-white/12 pt-6 md:mt-8 md:grid-cols-[minmax(0,1fr)_minmax(19rem,28rem)] md:gap-x-12"
           >
             {heroReference ? (
