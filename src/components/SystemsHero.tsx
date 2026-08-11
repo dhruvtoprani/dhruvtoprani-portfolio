@@ -65,7 +65,7 @@ export function SystemsHero() {
       ref={sectionRef}
       id="top"
       onPointerMove={trackPointer}
-      className="hero-spotlight relative min-h-dvh overflow-hidden bg-[#08080b] px-5 pb-14 pt-28 text-white md:px-8 md:pb-16 md:pt-28"
+      className="hero-spotlight relative min-h-[calc(100dvh-2rem)] overflow-hidden bg-[#08080b] px-5 pb-14 pt-28 text-white md:px-8 md:pb-8 md:pt-28"
       style={
         {
           "--hero-x": "68%",
@@ -85,16 +85,25 @@ export function SystemsHero() {
           <span className="text-[#ff3ca6]">Open to relocation</span>
         </Reveal>
 
-        <div className="flex flex-1 flex-col justify-center py-16 md:py-14">
+        <div className="flex flex-1 flex-col justify-center py-12 md:py-9">
           <h1 className="font-display max-w-[1320px] whitespace-nowrap text-[clamp(2.2rem,11.5vw,3.4rem)] font-black leading-[0.82] text-white md:text-[clamp(3.4rem,11vw,9.5rem)]">
             <ClipLine delay={0.02}>
               Dhruv <span className="text-[#ff3ca6]">Toprani</span>
             </ClipLine>
           </h1>
 
+          <Reveal delay={0.08} className="mt-7 max-w-[1240px]">
+            <p className="text-[clamp(1.35rem,2.8vw,2.8rem)] font-semibold leading-[1.08] text-white/48">
+              <strong className="font-black text-white">
+                Proven track record of success
+              </strong>{" "}
+              in fast-paced environments at varying scale.
+            </p>
+          </Reveal>
+
           <Reveal
-            delay={0.08}
-            className="mt-10 flex flex-wrap gap-3 md:mt-12 md:flex-nowrap"
+            delay={0.12}
+            className="mt-6 flex flex-wrap gap-3 md:flex-nowrap"
           >
             <a
               href="#projects"
@@ -129,8 +138,8 @@ export function SystemsHero() {
           </Reveal>
 
           <Reveal
-            delay={0.12}
-            className="mt-7 grid gap-x-8 gap-y-6 border-t border-white/12 pt-6 md:mt-8 md:grid-cols-[minmax(0,1fr)_minmax(19rem,28rem)] md:gap-x-12"
+            delay={0.14}
+            className="mt-6 grid gap-x-8 gap-y-6 border-t border-white/12 pt-6 md:grid-cols-[minmax(0,1fr)_minmax(19rem,28rem)] md:gap-x-12"
           >
             {heroReference ? (
               <figure className="border-t border-white/12 pt-5 md:col-start-2 md:row-start-1 md:self-start md:border-l md:border-t-0 md:pl-6 md:pt-0">
