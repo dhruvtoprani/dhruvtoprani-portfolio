@@ -6,11 +6,15 @@ import { useEffect, useState } from "react";
 import { profile } from "@/data/profile";
 
 const nav = [
-  ["About", "#about"],
   ["Experience", "#experience"],
   ["Projects", "#projects"],
+  ["References", "#references"],
+  ["Awards", "#awards"],
+  ["About", "#about"],
   ["Contact", "#contact"]
 ] as const;
+
+const sectionIds = ["top", ...nav.map(([, href]) => href.slice(1))];
 
 function GitHubMark() {
   return (
@@ -29,18 +33,22 @@ export function SystemsHeader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const sections = ["top", "about", "experience", "projects", "contact"];
-
     const update = () => {
       const scrollable =
         document.documentElement.scrollHeight - window.innerHeight;
       setProgress(scrollable > 0 ? window.scrollY / scrollable : 0);
+      const activationLine = Math.min(
+        window.innerHeight * 0.42,
+        window.innerHeight - 140
+      );
 
-      const current = [...sections]
+      const current = [...sectionIds]
         .reverse()
         .find((id) => {
           const element = document.getElementById(id);
-          return element ? element.getBoundingClientRect().top <= 120 : false;
+          return element
+            ? element.getBoundingClientRect().top <= activationLine
+            : false;
         });
 
       setActive(`#${current ?? "top"}`);
@@ -52,10 +60,10 @@ export function SystemsHeader() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-1 z-50 border-b border-white/15 bg-[#080908]/92 text-white backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-1 z-50 border-b border-white/10 bg-[#080908]/58 text-white shadow-[0_18px_42px_rgb(0_0_0_/_0.22)] backdrop-blur-2xl backdrop-saturate-150">
       <div
         aria-hidden="true"
-        className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-[#d8ff55]"
+        className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-[#d8ff55] transition-transform duration-150 ease-out"
         style={{ transform: `scaleX(${progress})` }}
       />
       <nav
@@ -64,16 +72,16 @@ export function SystemsHeader() {
       >
         <a
           href="#top"
-          className="flex min-h-11 items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff55]"
+          className="flex min-h-11 items-center gap-3 transition active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff55]"
         >
           <span className="font-mono text-sm font-bold">DT/26</span>
-          <span className="hidden h-4 w-px bg-white/25 sm:block" />
-          <span className="hidden text-sm text-white/62 sm:block">
+          <span className="hidden h-4 w-px bg-white/25 xl:block" />
+          <span className="hidden text-sm text-white/62 xl:block">
             Product · Program · Operations
           </span>
         </a>
 
-        <div className="hidden h-full items-center gap-5 md:flex">
+        <div className="hidden h-full items-center gap-4 md:flex lg:gap-5">
           {nav.map(([label, href]) => (
             <a
               key={href}
@@ -87,7 +95,7 @@ export function SystemsHeader() {
             >
               {label}
               {active === href ? (
-                <span className="absolute bottom-0 left-0 h-[3px] w-full bg-[#ff3ca6]" />
+                <span className="absolute bottom-0 left-0 h-[3px] w-full origin-center bg-[#ff3ca6] transition-transform duration-300 ease-out" />
               ) : null}
             </a>
           ))}
@@ -99,14 +107,14 @@ export function SystemsHeader() {
             target="_blank"
             rel="noreferrer"
             aria-label="Open Dhruv Toprani on GitHub"
-            className="grid h-11 w-11 place-items-center text-white/62 transition hover:bg-[#59f6ff] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d8ff55]"
+            className="grid h-11 w-11 place-items-center rounded-md text-white/62 transition hover:bg-[#59f6ff] hover:text-black active:scale-[0.94] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d8ff55]"
           >
             <GitHubMark />
           </a>
           <a
             href={`mailto:${profile.email}`}
             aria-label="Email Dhruv Toprani"
-            className="grid h-11 w-11 place-items-center text-white/62 transition hover:bg-[#ff3ca6] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d8ff55]"
+            className="grid h-11 w-11 place-items-center rounded-md text-white/62 transition hover:bg-[#ff3ca6] hover:text-white active:scale-[0.94] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d8ff55]"
           >
             <Mail size={18} />
           </a>

@@ -3,6 +3,7 @@ export type Experience = {
   role: string;
   summary: string;
   contribution: string;
+  details?: string[];
   website: string;
   tags: string[];
 };

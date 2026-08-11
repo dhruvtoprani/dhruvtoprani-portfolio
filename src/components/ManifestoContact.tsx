@@ -12,7 +12,7 @@ export function ManifestoContact() {
     >
       <div className="mx-auto max-w-[1600px]">
         <SectionHeader
-          eyebrow="CONTACT / 04"
+          eyebrow="CONTACT / 06"
           borderClassName="border-white"
           eyebrowClassName="text-[#d8ff55]"
         />

@@ -4,12 +4,83 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Minus, Plus } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import type { SimpleIcon } from "simple-icons";
+import {
+  siClaude,
+  siDotnet,
+  siFastapi,
+  siFlask,
+  siGit,
+  siGithub,
+  siJavascript,
+  siMapbox,
+  siNextdotjs,
+  siNodedotjs,
+  siOpencv,
+  siPostgresql,
+  siPrisma,
+  siPython,
+  siReact,
+  siSqlite,
+  siSupabase,
+  siThreedotjs,
+  siTypescript
+} from "simple-icons";
 
 import { SectionHeader } from "@/components/SectionHeader";
 import { featuredProjects } from "@/data/featuredProjects";
 import { profile } from "@/data/profile";
 
 const topProjects = featuredProjects.slice(0, 5);
+
+const projectPanelTransition = {
+  height: { bounce: 0, duration: 0.38, type: "spring" },
+  opacity: { duration: 0.18 }
+} as const;
+
+const techIconMap: Partial<Record<string, SimpleIcon>> = {
+  "C# / .NET": siDotnet,
+  "Claude Code": siClaude,
+  "GitHub CLI": siGithub,
+  "Geospatial APIs": siMapbox,
+  "Node.js": siNodedotjs,
+  "React Three Fiber": siReact,
+  "Three.js": siThreedotjs,
+  "Next.js": siNextdotjs,
+  "OpenCV": siOpencv,
+  "PostgreSQL": siPostgresql,
+  "SQLite": siSqlite,
+  "TypeScript": siTypescript,
+  "FastAPI": siFastapi,
+  "Flask": siFlask,
+  "JavaScript": siJavascript,
+  "Mapbox": siMapbox,
+  "Prisma": siPrisma,
+  "Python": siPython,
+  "React": siReact,
+  "Supabase": siSupabase,
+  "Git": siGit,
+  "SQL": siPostgresql
+};
+
+function TechStackPill({ item }: { item: string }) {
+  const icon = techIconMap[item];
+
+  return (
+    <span className="inline-flex min-h-8 items-center gap-2 border border-black/30 px-3 py-1.5 font-mono text-[10px] font-bold uppercase text-black/65">
+      {icon ? (
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          className="h-3.5 w-3.5 shrink-0 fill-current"
+        >
+          <path d={icon.path} />
+        </svg>
+      ) : null}
+      {item}
+    </span>
+  );
+}
 
 export function ProjectDossiers() {
   const [openProject, setOpenProject] = useState<string | null>(null);
@@ -25,7 +96,7 @@ export function ProjectDossiers() {
     >
       <div className="mx-auto max-w-[1600px] px-5 py-24 md:px-8 md:py-32">
         <SectionHeader
-          eyebrow="SELECTED PROJECTS / 03"
+          eyebrow="SELECTED PROJECTS / 02"
           borderClassName="border-black"
           action={
             <a
@@ -48,18 +119,21 @@ export function ProjectDossiers() {
             return (
               <motion.article
                 key={project.name}
+                layout
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.28, delay: index * 0.025 }}
                 className="border-t border-black/35"
               >
-                <button
+                <motion.button
                   type="button"
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                   onClick={() => toggleProject(project.name)}
-                  className="grid w-full cursor-pointer grid-cols-[1fr_auto] gap-x-4 gap-y-3 py-7 text-left transition-colors hover:text-[#686d65] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-36 md:grid-cols-[64px_0.7fr_1fr_auto] md:items-center md:gap-6 md:py-8"
+                  whileTap={{ scale: 0.992 }}
+                  transition={{ bounce: 0, duration: 0.22, type: "spring" }}
+                  className="grid w-full origin-top cursor-pointer grid-cols-[1fr_auto] gap-x-4 gap-y-3 py-7 text-left transition-colors hover:text-[#686d65] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-36 md:grid-cols-[64px_0.7fr_1fr_auto] md:items-center md:gap-6 md:py-8"
                 >
                   <span className="col-start-1 row-start-1 font-mono text-xs opacity-45 md:col-start-1 md:row-start-1">
                     {String(index + 1).padStart(2, "0")}
@@ -79,7 +153,7 @@ export function ProjectDossiers() {
                     {isOpen ? "CLOSE" : "VIEW MORE"}
                     {isOpen ? <Minus size={17} /> : <Plus size={17} />}
                   </span>
-                </button>
+                </motion.button>
 
                 <AnimatePresence initial={false}>
                   {isOpen ? (
@@ -88,10 +162,14 @@ export function ProjectDossiers() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.28, ease: "easeOut" }}
-                      className="overflow-hidden"
+                      transition={projectPanelTransition}
+                      className="origin-top overflow-hidden"
                     >
-                      <div
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.985, y: -10 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.99, y: -6 }}
+                        transition={{ bounce: 0, duration: 0.32, type: "spring" }}
                         className={
                           project.image
                             ? "grid gap-8 py-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-12"
@@ -116,12 +194,7 @@ export function ProjectDossiers() {
 
                           <div className="mt-8 flex flex-wrap gap-2">
                             {project.stack.map((item) => (
-                              <span
-                                key={item}
-                                className="border border-black/30 px-3 py-1.5 font-mono text-[10px] font-bold uppercase text-black/65"
-                              >
-                                {item}
-                              </span>
+                              <TechStackPill key={item} item={item} />
                             ))}
                           </div>
 
@@ -131,7 +204,7 @@ export function ProjectDossiers() {
                                 href={project.demo}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex min-h-11 items-center gap-2 bg-black px-4 py-3 text-sm font-bold text-white transition hover:text-[#d8ff55] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+                                className="inline-flex min-h-11 items-center gap-2 bg-black px-4 py-3 text-sm font-bold text-white transition hover:text-[#d8ff55] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
                               >
                                 Live project
                                 <ArrowUpRight size={16} />
@@ -142,7 +215,7 @@ export function ProjectDossiers() {
                                 href={project.github}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex min-h-11 items-center gap-2 border border-black px-4 py-3 text-sm font-bold text-black transition hover:text-[#686d65] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+                                className="inline-flex min-h-11 items-center gap-2 border border-black px-4 py-3 text-sm font-bold text-black transition hover:text-[#686d65] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
                               >
                                 Source
                                 <ArrowUpRight size={16} />
@@ -165,7 +238,7 @@ export function ProjectDossiers() {
                             />
                           </div>
                         ) : null}
-                      </div>
+                      </motion.div>
                     </motion.div>
                   ) : null}
                 </AnimatePresence>

@@ -4,7 +4,12 @@ export const skillBands = {
     "Program execution",
     "KPI design",
     "Operations",
-    "Stakeholder alignment"
+    "Stakeholder alignment",
+    "Roadmapping",
+    "PRDs",
+    "User research",
+    "Launch planning",
+    "Decision logs"
   ],
   impact: [
     "Sustainability",
@@ -12,7 +17,11 @@ export const skillBands = {
     "Growth",
     "Raising the standard",
     "Product strategy",
-    "User research"
+    "User research",
+    "Mentorship",
+    "Public outcomes",
+    "Continuous improvement",
+    "Systems thinking"
   ],
   technical: [
     "Next.js",
@@ -21,13 +30,40 @@ export const skillBands = {
     "SQL",
     "C# / .NET",
     "Applied AI",
-    "Robotics"
+    "Robotics",
+    "Three.js",
+    "FastAPI",
+    "PostgreSQL",
+    "GitHub Actions",
+    "APIs"
   ],
   research: [
     "Human-robot allocation",
     "Simulation",
     "Optimization",
     "Experiment design",
-    "Full-stack"
+    "Full-stack",
+    "SHAP",
+    "XGBoost",
+    "Geospatial analysis",
+    "Data visualization",
+    "Human-AI systems"
+  ],
+  references: [
+    "Ownership",
+    "Execution",
+    "Communication",
+    "Technical judgment",
+    "Reliability",
+    "Initiative",
+    "Cross-functional trust"
+  ],
+  craft: [
+    "Cleaner handoffs",
+    "Sharper priorities",
+    "Measured impact",
+    "Operational rigor",
+    "Robotics & automation",
+    "Builder mindset"
   ]
 } as const;
