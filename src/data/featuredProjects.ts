@@ -14,6 +14,25 @@ export type FeaturedProject = {
 
 export const featuredProjects: FeaturedProject[] = [
   {
+    name: "GitStrata",
+    category: "Generative Art / Developer Identity",
+    hook: "Turn a public GitHub history into a one-of-one digital stone.",
+    description:
+      "Translates repositories, languages, development eras, and collaboration signals into an interactive obsidian specimen with luminous mineral veins, inspectable repository fossils, and exportable share compositions.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Three.js",
+      "React Three Fiber",
+      "Sharp",
+      "GitHub API"
+    ],
+    image: "/work/gitstrata-gallery.webp",
+    imageAlt:
+      "GitStrata specimen gallery showing a luminous repository-derived stone, mineral composition, and development timeline",
+    github: "https://github.com/dhruvtoprani/gitstrata"
+  },
+  {
     name: "RatRadar NYC",
     category: "Civic Intelligence / Machine Learning",
     hook: "Predict next-week rodent complaint surges across 177 NYC ZIP areas.",
