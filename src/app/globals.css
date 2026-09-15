@@ -107,6 +107,7 @@ body {
 }
 
 .reference-rail {
+  mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
   scroll-behavior: auto;
   scrollbar-color: #db0066 transparent;
   scrollbar-width: thin;

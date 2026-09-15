@@ -6,7 +6,7 @@ export type RecognitionItem = {
 export type InvolvementItem = {
   organization: string;
   role: string;
-  detail?: string;
+  detail: string;
 };
 
 export const awards: RecognitionItem[] = [
@@ -30,7 +30,6 @@ export const involvement: InvolvementItem[] = [
     role: "Program Manager",
     detail: "Led sprints across 27 engineers to qualify for the World Finals, ranking in the top 5% globally."
   },
-  { organization: "MSU Product Management Society", role: "President" },
   {
     organization: "Spartan Technical Consulting",
     role: "President",
@@ -43,7 +42,8 @@ export const involvement: InvolvementItem[] = [
   },
   {
     organization: "Honors College Dean's Advisory Council",
-    role: "Director of Public Relations"
+    role: "Director of Public Relations",
+    detail: "Public relations and student-facing communication for the Honors College's student advisory council."
   },
   {
     organization: "Humanity First MSU",
@@ -57,14 +57,24 @@ export const involvement: InvolvementItem[] = [
   },
   {
     organization: "Undergraduate International Indian Student Association",
-    role: "Director of Outreach"
+    role: "Director of Outreach",
+    detail: "Outreach and community engagement connecting international Indian students at MSU."
   },
   {
     organization: "MSU International Relations Organization",
-    role: "Assistant Vice President, Conference Preparation"
+    role: "Assistant Vice President, Conference Preparation",
+    detail: "Conference preparation and coordination supporting student engagement in international relations."
   },
-  { organization: "Undergraduate Research Office", role: "Research Mentor" },
-  { organization: "Michigan State University", role: "Resident Assistant" }
+  {
+    organization: "Undergraduate Research Office",
+    role: "Research Mentor",
+    detail: "Peer mentorship supporting undergraduate students as they explore research opportunities."
+  },
+  {
+    organization: "Michigan State University",
+    role: "Resident Assistant",
+    detail: "Residential community building and peer support for students navigating campus life."
+  }
 ];
 
 export const recognitionMarquee = [

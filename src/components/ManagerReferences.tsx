@@ -114,7 +114,7 @@ export function ManagerReferences() {
 
       if (isVisible && !document.hidden && !hovered && !focused && time >= resumeAt) {
         const cycleWidth = getCycleWidth(rail);
-        position += elapsed * 12 / 1000;
+        position += elapsed * 20 / 1000;
         if (cycleWidth > 0 && position >= cycleWidth) position -= cycleWidth;
         rail.scrollLeft = position;
       } else {
