@@ -9,7 +9,11 @@ export const skillBands = {
     "PRDs",
     "User research",
     "Launch planning",
-    "Decision logs"
+    "Decision logs",
+    "Pilot management",
+    "UAT",
+    "Market research",
+    "Go-to-market strategy"
   ],
   impact: [
     "Sustainability",
@@ -35,7 +39,12 @@ export const skillBands = {
     "FastAPI",
     "PostgreSQL",
     "GitHub Actions",
-    "APIs"
+    "APIs",
+    "Power BI",
+    "BigQuery",
+    "RAG",
+    "MCP",
+    "Agentic workflows"
   ],
   research: [
     "Human-robot allocation",
@@ -64,6 +73,11 @@ export const skillBands = {
     "Measured impact",
     "Operational rigor",
     "Robotics & automation",
-    "Builder mindset"
+    "Builder mindset",
+    "SAFe",
+    "PI Planning",
+    "Capacity planning",
+    "Jira",
+    "Confluence"
   ]
 } as const;

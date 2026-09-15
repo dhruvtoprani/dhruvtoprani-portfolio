@@ -53,6 +53,11 @@ export function RecognitionLedger() {
                   </span>
                   <span className="text-lg font-extrabold leading-7 md:text-xl">
                     {item.organization}
+                    {item.detail ? (
+                      <span className="mt-2 block text-sm font-medium leading-6 text-white/70">
+                        {item.detail}
+                      </span>
+                    ) : null}
                   </span>
                   <span className="font-mono text-xs font-black uppercase leading-5 text-white/58 sm:text-right">
                     {item.role}

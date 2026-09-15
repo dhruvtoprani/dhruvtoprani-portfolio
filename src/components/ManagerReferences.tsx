@@ -1,7 +1,7 @@
 "use client";
 
 import { useReducedMotion } from "framer-motion";
-import { Quote, Shuffle } from "lucide-react";
+import { ArrowUpRight, List, Quote, Shuffle, X } from "lucide-react";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 
 import { Reveal } from "@/components/Reveal";
@@ -18,6 +18,12 @@ const featuredReferenceIds = [
 const featuredReferences = featuredReferenceIds
   .map((id) => managerReferences.find((reference) => reference.id === id))
   .filter((reference): reference is ManagerReference => Boolean(reference));
+const referenceGroups = Array.from(
+  new Set(managerReferences.map((reference) => reference.name))
+).map((name) => ({
+  name,
+  references: managerReferences.filter((reference) => reference.name === name)
+}));
 
 function sampleReferences(pool: ManagerReference[], count: number) {
   const candidates = [...pool];
@@ -171,6 +177,7 @@ function ScrambleText({
 }
 
 export function ManagerReferences() {
+  const [isBrowsing, setIsBrowsing] = useState(false);
   const [visibleReferences, setVisibleReferences] = useState(() =>
     featuredReferences.length === visibleReferenceCount
       ? featuredReferences
@@ -205,18 +212,35 @@ export function ManagerReferences() {
           borderClassName="border-black"
           eyebrowClassName="text-[#db0066]"
           action={
-            <button
-              type="button"
-              onClick={shuffleReferences}
-              className="inline-flex min-h-12 items-center gap-3 border border-[#db0066] px-5 py-3 font-mono text-xs font-black uppercase text-[#db0066] transition hover:bg-[#db0066] hover:text-white active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#db0066]"
-            >
-              Shuffle
-              <Shuffle size={16} />
-            </button>
+            <div className="flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => setIsBrowsing((current) => !current)}
+                aria-expanded={isBrowsing}
+                aria-controls="reference-library"
+                className="inline-flex min-h-12 items-center gap-3 border border-[#db0066] px-5 py-3 font-mono text-xs font-black uppercase text-[#db0066] transition hover:bg-[#db0066] hover:text-white active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#db0066]"
+              >
+                {isBrowsing ? "Back to highlights" : "Browse all"}
+                {isBrowsing ? <X size={16} /> : <List size={16} />}
+              </button>
+              {!isBrowsing ? (
+                <button
+                  type="button"
+                  onClick={shuffleReferences}
+                  className="inline-flex min-h-12 items-center gap-3 border border-[#db0066] px-5 py-3 font-mono text-xs font-black uppercase text-[#db0066] transition hover:bg-[#db0066] hover:text-white active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#db0066]"
+                >
+                  Shuffle
+                  <Shuffle size={16} />
+                </button>
+              ) : null}
+            </div>
           }
         />
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+        <div
+          hidden={isBrowsing}
+          className={isBrowsing ? "hidden" : "mt-14 grid gap-5 lg:grid-cols-3"}
+        >
           {visibleReferences.map((reference, index) => {
             const personKey = `${reference.name}-${reference.role}-${reference.organization}`;
 
@@ -271,6 +295,48 @@ export function ManagerReferences() {
               </Reveal>
             );
           })}
+        </div>
+        <div id="reference-library" hidden={!isBrowsing}>
+          {isBrowsing ? referenceGroups.map(({ name, references }) => {
+            const author = references[0];
+
+            return (
+              <div key={name} className="mt-14 border-t border-black/20 pt-8">
+                <div className="flex flex-wrap items-start justify-between gap-5">
+                  <div>
+                    <h3 className="text-2xl font-black md:text-3xl">{name}</h3>
+                    <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-black/60">
+                      {author.role} · {author.organization}
+                    </p>
+                    <p className="mt-2 font-mono text-[10px] font-bold uppercase text-black/50">
+                      {author.relationship}
+                    </p>
+                  </div>
+                  {author.letterHref ? (
+                    <a
+                      href={author.letterHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex min-h-11 items-center gap-2 border border-black/24 px-4 py-3 font-mono text-xs font-black uppercase text-[#080908] transition hover:border-[#db0066] hover:bg-[#db0066] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#db0066]"
+                    >
+                      View full letter
+                      <ArrowUpRight size={16} />
+                    </a>
+                  ) : null}
+                </div>
+                <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  {references.map((reference) => (
+                    <figure key={reference.id} className="border border-black/18 bg-white/45 p-6">
+                      <Quote aria-hidden="true" className="h-5 w-5 text-[#db0066]" />
+                      <blockquote className="mt-5 text-lg font-medium leading-8 text-[#080908]">
+                        {renderEmphasizedText(reference.quote, reference.emphasis)}
+                      </blockquote>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            );
+          }) : null}
         </div>
       </div>
     </section>

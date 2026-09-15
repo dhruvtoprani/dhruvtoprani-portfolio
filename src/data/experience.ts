@@ -1,6 +1,7 @@
 export type Experience = {
   organization: string;
   role: string;
+  dates?: string;
   summary: string;
   contribution: string;
   details?: string[];
@@ -12,28 +13,33 @@ export const experiences: Experience[] = [
   {
     organization: "Gaia Predictive",
     role: "Growth Intern",
+    dates: "Jun 2026 - Present",
     summary:
-      "Turn customer discovery into paid pilots, owning growth from lead sourcing through onboarding and deployment milestones.",
+      "Turn discovery across five verticals into paid pilots and sharper market priorities, contributing to 3+ signed letters of intent.",
     contribution:
       "Customer discovery, growth strategy, pilot ownership, positioning, and success metrics.",
     details: [
-      "Synthesized 30+ interviews across three industries into prioritized requirements and positioning, driving 3+ signed letters of intent.",
-      "Owned five paid pilots end to end, from sourcing leads to defining success metrics, onboarding, and deployment milestones."
+      "Led 30+ interviews across five verticals to prioritize market requirements and pilot strategy, contributing to 3+ signed letters of intent.",
+      "Owned 5+ paid pilots end to end, from lead sourcing and discovery through scope definition, onboarding, and milestone tracking.",
+      "Drove exit from an underperforming vertical after customer analysis showed 2x longer sales cycles and lower expected ROI, reallocating capacity toward higher-value markets."
     ],
     website: "https://gaiapredictive.com",
     tags: ["Growth", "Customer Discovery", "Pilots"]
   },
   {
     organization: "Whisker",
-    role: "Software Technical Program Management Intern, Consumer Robots",
+    role: "Technical Program Management Intern",
+    dates: "May 2026 - Aug 2026",
     summary:
-      "Drive delivery for a 12-engineer robotics pod while building workflow automations that save program teams 30+ hours each week.",
+      "Led delivery across 40+ features and 12+ team members, accelerated new-product workflows, and briefed 75+ stakeholders on progress and tradeoffs.",
     contribution:
       "Program execution, release coordination, workflow automation, and engineering operations.",
     details: [
-      "Ran SAFe delivery for 12 engineers across PI Planning, ART Syncs, refinement, 6+ sprints, and a biweekly release cadence.",
-      "Managed 40+ features in a program increment, performing RAID and capacity analysis to drive milestone and resource decisions.",
-      "Automated reprioritization impact assessments and replanning with AWS Lambda, Claude, and Jira, saving 5+ TPMs 30+ hours each week."
+      "Managed 40+ features in a program increment, performing risk and capacity analysis to drive milestone and resource decisions.",
+      "Led cross-functional Agile delivery for 12+ members over 6+ sprints, running PI Planning, ART Syncs, and daily standups using Jira.",
+      "Automated product-feature reprioritization impact assessments and replanning with a multi-agent AI system, saving 6+ hours each week.",
+      "Cut new-product introduction (NPI) cycle time from 3+ hours to less than five minutes by automating manual processes for go-to-market and supply-chain teams.",
+      "Owned PI Readout reporting end to end, briefing 75+ technical and non-technical stakeholders on progress, risks, and tradeoffs."
     ],
     website: "https://www.whisker.com/about-us",
     tags: ["Robotics", "TPM", "Agile Delivery"]
@@ -41,21 +47,24 @@ export const experiences: Experience[] = [
   {
     organization: "MSU Research Foundation",
     role: "Product Management Intern",
+    dates: "Sep 2025 - Present",
     summary:
-      "Build lifecycle infrastructure across seven applications and five teams while translating user research into shipped product improvements.",
+      "Turn user research into measurable growth: 35% lower onboarding drop-off, approximately 20% more paid subscribers, and unified lifecycle visibility across five teams.",
     contribution:
       "User research, UAT, CRM product ownership, analytics, and founder enablement.",
     details: [
       "Built a unified CRM pipeline across 7+ applications, centralizing lifecycle metrics and improving full-funnel visibility across five teams.",
       "Reduced LMS onboarding drop-off 35% through 50+ user interviews, funnel analysis, UAT, and shipped UX improvements.",
-      "Developed a technical documentation-compression MCP adopted by 10+ startups, reducing AI token spend by up to 40%."
+      "Developed a technical documentation-compression MCP adopted by 10+ startups, reducing AI token spend by up to 40%.",
+      "Increased paid subscribers approximately 20% by analyzing customer data, identifying friction, and wireframing a lower-friction pricing page."
     ],
     website: "https://msufoundation.org",
     tags: ["Product", "CRM", "User Research"]
   },
   {
-    organization: "Dewpoint Technology",
+    organization: "Dewpoint",
     role: "Product Management Intern",
+    dates: "Jun 2025 - Aug 2025",
     summary:
       "Defined a $1.2M product opportunity and shipped an operations portal and KPI dashboards used by 20+ network operators.",
     contribution:
@@ -63,7 +72,7 @@ export const experiences: Experience[] = [
     details: [
       "Validated a $1.2M NOC opportunity through 50+ interviews, identifying workflows, adoption barriers, and success metrics.",
       "Established NOC operating infrastructure and Power BI reporting across six performance KPIs for leadership decisions.",
-      "Launched a NOC portal in under six weeks, centralizing onboarding information and workflows used by 20+ operators."
+      "Launched an internal operations portal in SharePoint used by 20+ operators, centralizing resources and standardizing execution."
     ],
     website: "https://www.dewpoint.com",
     tags: ["Product", "KPI Analytics", "Strategy"]
@@ -71,15 +80,16 @@ export const experiences: Experience[] = [
   {
     organization: "Consumers Energy",
     role: "Software Engineering Intern",
+    dates: "May 2025 - Jun 2025",
     summary:
-      "Shipped operations and AI workflow tools that improved field reporting efficiency by 35% and identified $300K per month in unclaimed rebates.",
+      "Built software and AI tools that reduced field-tracking errors by 35%, cut legal knowledge lookup time by 70%, and surfaced $300K per month in unclaimed customer benefits.",
     contribution:
       "Stakeholder discovery, full-stack development, workflow automation, and operational analytics.",
     details: [
       "Created a Python RAG pipeline across 5,000+ contract documents, cutting legal-team knowledge lookup time 70%.",
-      "Built a C#/.NET and SQL operations platform for 500+ field users, improving storm-response reporting efficiency 35%.",
+      "Built a C#/.NET and SQL operations platform for 500+ field users, replacing manual tracking and reducing errors by 35%.",
       "Automated compliance analysis across 1,500+ Power Apps, surfacing ownership, risk, and remediation priorities in Power BI.",
-      "Architected a SQL/Python eligibility model uncovering a $300K monthly incentive gap and projecting 23% higher program capture."
+      "Surfaced $300K per month in unclaimed customer benefits by prototyping a SQL/Python rebate eligibility engine."
     ],
     website: "https://www.consumersenergy.com",
     tags: ["Energy", "Software", "Operations"]

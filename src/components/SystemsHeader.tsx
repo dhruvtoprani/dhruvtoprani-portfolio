@@ -55,8 +55,15 @@ export function SystemsHeader() {
     };
 
     update();
+    const resizeObserver = new ResizeObserver(update);
+    resizeObserver.observe(document.body);
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    window.addEventListener("resize", update);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   return (

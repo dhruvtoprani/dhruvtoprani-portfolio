@@ -190,7 +190,7 @@ export function SystemsHero() {
                     Minor
                   </dt>
                   <dd className="mt-2 text-lg font-extrabold leading-tight text-white/88">
-                    Entrepreneurship
+                    {profile.education.minor}
                   </dd>
                 </div>
                 <div className="sm:border-l sm:border-white/12 sm:pl-5">

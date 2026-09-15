@@ -30,7 +30,8 @@ export const featuredProjects: FeaturedProject[] = [
     image: "/work/gitstrata-gallery.webp",
     imageAlt:
       "GitStrata specimen gallery showing a luminous repository-derived stone, mineral composition, and development timeline",
-    github: "https://github.com/dhruvtoprani/gitstrata"
+    github: "https://github.com/dhruvtoprani/gitstrata",
+    demo: "https://gitstrata.vercel.app"
   },
   {
     name: "RatRadar NYC",
@@ -44,6 +45,27 @@ export const featuredProjects: FeaturedProject[] = [
       "RatRadar NYC geospatial risk map showing predicted complaint surges across ZIP areas",
     github: "https://github.com/dhruvtoprani/ratradar-nyc",
     demo: "https://ratradar-nyc.vercel.app"
+  },
+  {
+    name: "6Dot",
+    category: "Accessibility / Hardware Product",
+    hook: "Make braille interaction more accessible with a phone attachment.",
+    description:
+      "Prototyped an Arduino Nano-powered braille phone attachment and user-tested it with visually impaired students. The project won first place at the MSU Designathon.",
+    stack: ["Arduino Nano", "Hardware Prototyping", "User Testing"],
+    metric: "1st place",
+    metricLabel: "MSU Designathon",
+    demo: "https://discover6dot.vercel.app"
+  },
+  {
+    name: "HexaFlow",
+    category: "Infrastructure / Hardware Product",
+    hook: "Take a novel server-rack design from prototype to a secured pilot.",
+    description:
+      "Designed and prototyped a novel server-rack, secured a pilot from the Director of MSU ICER, and won first place at the 2DAY Venture Challenge.",
+    stack: ["Hardware Prototyping", "Product Design", "Pilot Management"],
+    metric: "1st place",
+    metricLabel: "2DAY Venture Challenge"
   },
   {
     name: "SunSight",

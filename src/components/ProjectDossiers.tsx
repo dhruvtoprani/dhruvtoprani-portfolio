@@ -32,7 +32,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { featuredProjects } from "@/data/featuredProjects";
 import { profile } from "@/data/profile";
 
-const topProjects = featuredProjects.slice(0, 5);
+const topProjects = featuredProjects.slice(0, 7);
 
 const projectPanelTransition = {
   height: { bounce: 0, duration: 0.38, type: "spring" },

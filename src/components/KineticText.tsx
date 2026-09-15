@@ -27,7 +27,7 @@ export function ClipLine({
   return (
     <motion.span
       className="block overflow-hidden px-[0.04em] pb-[0.16em]"
-      initial={reduceMotion ? false : "hidden"}
+      initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
     >
@@ -38,7 +38,11 @@ export function ClipLine({
           visible: {
             opacity: 1,
             rotate: 0,
-            transition: { delay, duration: 0.72, ease },
+            transition: {
+              delay: reduceMotion ? 0 : delay,
+              duration: reduceMotion ? 0 : 0.72,
+              ease
+            },
             y: 0
           }
         }}
@@ -61,14 +65,14 @@ export function StaggerWords({
     <motion.span
       aria-label={text}
       className={className}
-      initial={reduceMotion ? false : "hidden"}
+      initial="hidden"
       whileInView="visible"
       variants={{
         hidden: {},
         visible: {
           transition: {
-            delayChildren: delay,
-            staggerChildren: 0.045
+            delayChildren: reduceMotion ? 0 : delay,
+            staggerChildren: reduceMotion ? 0 : 0.045
           }
         }
       }}
@@ -83,7 +87,7 @@ export function StaggerWords({
             hidden: { opacity: 0, y: "0.55em" },
             visible: {
               opacity: 1,
-              transition: { duration: 0.45, ease },
+              transition: { duration: reduceMotion ? 0 : 0.45, ease },
               y: 0
             }
           }}

@@ -8,7 +8,7 @@ export const profile = {
   education: {
     program: "Honors Computer Engineering",
     school: "Michigan State University",
-    minor: "Entrepreneurship",
+    minor: "Entrepreneurship & Innovation",
     concentration: "Robotics & Automation"
   },
   location: "Michigan / New Jersey / UAE",

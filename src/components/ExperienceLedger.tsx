@@ -75,6 +75,11 @@ export function ExperienceLedger() {
                     <p className="mt-3 text-base font-semibold text-white/76">
                       {experience.role}
                     </p>
+                    {experience.dates ? (
+                      <p className="mt-3 font-mono text-xs font-bold text-white/55">
+                        {experience.dates}
+                      </p>
+                    ) : null}
                   </div>
                   <div>
                     <p className="max-w-3xl text-lg font-semibold leading-8 text-white/90 md:text-xl md:leading-9">
