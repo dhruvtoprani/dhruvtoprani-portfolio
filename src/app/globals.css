@@ -106,6 +106,30 @@ body {
   }
 }
 
+.reference-rail {
+  scroll-snap-type: x mandatory;
+  scrollbar-color: #db0066 transparent;
+  scrollbar-width: thin;
+}
+
+.reference-rail-card {
+  min-width: 0;
+  width: 88%;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .reference-rail-card {
+    width: calc((100% - 1rem) / 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .reference-rail-card {
+    width: calc((100% - 2rem) / 3);
+  }
+}
+
 main {
   isolation: isolate;
 }

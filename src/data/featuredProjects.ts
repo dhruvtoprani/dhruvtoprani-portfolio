@@ -53,6 +53,9 @@ export const featuredProjects: FeaturedProject[] = [
     description:
       "Prototyped an Arduino Nano-powered braille phone attachment and user-tested it with visually impaired students. The project won first place at the MSU Designathon.",
     stack: ["Arduino Nano", "Hardware Prototyping", "User Testing"],
+    image: "/work/6dot.png",
+    imageAlt:
+      "6Dot accessibility website showing its braille phone attachment prototype and Decode the World with 6Dot headline",
     metric: "1st place",
     metricLabel: "MSU Designathon",
     demo: "https://discover6dot.vercel.app"

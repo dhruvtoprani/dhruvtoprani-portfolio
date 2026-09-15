@@ -1,7 +1,7 @@
 "use client";
 
 import { useReducedMotion } from "framer-motion";
-import { ArrowUpRight, List, Quote, Shuffle, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Quote, Shuffle } from "lucide-react";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 
 import { Reveal } from "@/components/Reveal";
@@ -24,6 +24,10 @@ const referenceGroups = Array.from(
   name,
   references: managerReferences.filter((reference) => reference.name === name)
 }));
+const orderedReferences = Array.from(
+  { length: Math.max(...referenceGroups.map((group) => group.references.length)) },
+  (_, index) => referenceGroups.flatMap((group) => group.references[index] ?? [])
+).flat();
 
 function sampleReferences(pool: ManagerReference[], count: number) {
   const candidates = [...pool];
@@ -177,12 +181,48 @@ function ScrambleText({
 }
 
 export function ManagerReferences() {
-  const [isBrowsing, setIsBrowsing] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const railRef = useRef<HTMLDivElement>(null);
+  const [selectedAuthor, setSelectedAuthor] = useState("all");
+  const [railEdges, setRailEdges] = useState({ start: true, end: false });
   const [visibleReferences, setVisibleReferences] = useState(() =>
     featuredReferences.length === visibleReferenceCount
       ? featuredReferences
       : managerReferences.slice(0, visibleReferenceCount)
   );
+  const visibleIds = new Set(visibleReferences.map((reference) => reference.id));
+  const galleryReferences = orderedReferences.filter(
+    (reference) => !visibleIds.has(reference.id) &&
+      (selectedAuthor === "all" || reference.name === selectedAuthor)
+  );
+
+  useEffect(() => {
+    const rail = railRef.current;
+    if (!rail) return;
+
+    const updateEdges = () => setRailEdges({
+      start: rail.scrollLeft <= 2,
+      end: rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2
+    });
+    rail.scrollTo({ left: 0, behavior: "instant" });
+    updateEdges();
+    const observer = new ResizeObserver(updateEdges);
+    observer.observe(rail);
+    rail.addEventListener("scroll", updateEdges, { passive: true });
+    return () => {
+      observer.disconnect();
+      rail.removeEventListener("scroll", updateEdges);
+    };
+  }, [selectedAuthor, visibleReferences]);
+
+  function moveRail(direction: number) {
+    const rail = railRef.current;
+    if (!rail) return;
+    rail.scrollBy({
+      left: direction * (rail.clientWidth + 16),
+      behavior: reduceMotion ? "instant" : "smooth"
+    });
+  }
 
   function shuffleReferences() {
     setVisibleReferences((currentReferences) => {
@@ -212,35 +252,18 @@ export function ManagerReferences() {
           borderClassName="border-black"
           eyebrowClassName="text-[#db0066]"
           action={
-            <div className="flex flex-wrap gap-3">
-              <button
-                type="button"
-                onClick={() => setIsBrowsing((current) => !current)}
-                aria-expanded={isBrowsing}
-                aria-controls="reference-library"
-                className="inline-flex min-h-12 items-center gap-3 border border-[#db0066] px-5 py-3 font-mono text-xs font-black uppercase text-[#db0066] transition hover:bg-[#db0066] hover:text-white active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#db0066]"
-              >
-                {isBrowsing ? "Back to highlights" : "Browse all"}
-                {isBrowsing ? <X size={16} /> : <List size={16} />}
-              </button>
-              {!isBrowsing ? (
-                <button
-                  type="button"
-                  onClick={shuffleReferences}
-                  className="inline-flex min-h-12 items-center gap-3 border border-[#db0066] px-5 py-3 font-mono text-xs font-black uppercase text-[#db0066] transition hover:bg-[#db0066] hover:text-white active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#db0066]"
-                >
-                  Shuffle
-                  <Shuffle size={16} />
-                </button>
-              ) : null}
-            </div>
+            <button
+              type="button"
+              onClick={shuffleReferences}
+              className="inline-flex min-h-12 items-center gap-3 border border-[#db0066] px-5 py-3 font-mono text-xs font-black uppercase text-[#db0066] transition hover:bg-[#db0066] hover:text-white active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#db0066]"
+            >
+              Shuffle
+              <Shuffle size={16} />
+            </button>
           }
         />
 
-        <div
-          hidden={isBrowsing}
-          className={isBrowsing ? "hidden" : "mt-14 grid gap-5 lg:grid-cols-3"}
-        >
+        <div className="mt-14 grid gap-5 lg:grid-cols-3" data-reference-highlights>
           {visibleReferences.map((reference, index) => {
             const personKey = `${reference.name}-${reference.role}-${reference.organization}`;
 
@@ -251,7 +274,7 @@ export function ManagerReferences() {
                 className="flex min-h-80 flex-col border border-black/18 bg-white/45 p-6 md:p-8"
               >
                 <Quote className="h-6 w-6 text-[#db0066]" />
-                <blockquote className="mt-8 text-2xl font-medium leading-9 text-[#080908] md:text-3xl md:leading-10">
+                <blockquote className="mt-8 text-xl font-medium leading-8 text-[#080908] md:text-2xl md:leading-9">
                   <ScrambleText
                     animateKey={reference.id}
                     emphasis={reference.emphasis}
@@ -296,47 +319,69 @@ export function ManagerReferences() {
             );
           })}
         </div>
-        <div id="reference-library" hidden={!isBrowsing}>
-          {isBrowsing ? referenceGroups.map(({ name, references }) => {
-            const author = references[0];
-
-            return (
-              <div key={name} className="mt-14 border-t border-black/20 pt-8">
-                <div className="flex flex-wrap items-start justify-between gap-5">
-                  <div>
-                    <h3 className="text-2xl font-black md:text-3xl">{name}</h3>
-                    <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-black/60">
-                      {author.role} · {author.organization}
-                    </p>
-                    <p className="mt-2 font-mono text-[10px] font-bold uppercase text-black/50">
-                      {author.relationship}
-                    </p>
-                  </div>
-                  {author.letterHref ? (
-                    <a
-                      href={author.letterHref}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex min-h-11 items-center gap-2 border border-black/24 px-4 py-3 font-mono text-xs font-black uppercase text-[#080908] transition hover:border-[#db0066] hover:bg-[#db0066] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#db0066]"
-                    >
-                      View full letter
-                      <ArrowUpRight size={16} />
+        <div className="mt-12 border-t border-black/20 pt-8">
+          <div className="flex flex-wrap items-center justify-between gap-5">
+            <h3 className="text-xl font-black">More perspectives</h3>
+            <div className="flex flex-wrap items-center gap-3">
+              <select
+                aria-label="Filter quotes by author"
+                value={selectedAuthor}
+                onChange={(event) => setSelectedAuthor(event.target.value)}
+                className="min-h-11 max-w-full border border-black/24 bg-transparent px-3 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#db0066]"
+              >
+                <option value="all">All references</option>
+                {referenceGroups.map(({ name }) => <option key={name} value={name}>{name}</option>)}
+              </select>
+              <button
+                type="button"
+                aria-label="Previous quotes"
+                aria-controls="reference-library"
+                title="Previous quotes"
+                disabled={railEdges.start}
+                onClick={() => moveRail(-1)}
+                className="grid h-11 w-11 place-items-center border border-black/24 transition hover:bg-[#db0066] hover:text-white disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#db0066]"
+              >
+                <ArrowLeft size={18} />
+              </button>
+              <button
+                type="button"
+                aria-label="Next quotes"
+                aria-controls="reference-library"
+                title="Next quotes"
+                disabled={railEdges.end}
+                onClick={() => moveRail(1)}
+                className="grid h-11 w-11 place-items-center border border-black/24 transition hover:bg-[#db0066] hover:text-white disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#db0066]"
+              >
+                <ArrowRight size={18} />
+              </button>
+            </div>
+          </div>
+          <div
+            ref={railRef}
+            id="reference-library"
+            role="region"
+            aria-label="More reference quotes"
+            tabIndex={0}
+            className="reference-rail mt-6 flex gap-4 overflow-x-auto pb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#db0066]"
+          >
+            {galleryReferences.map((reference) => (
+              <figure key={reference.id} className="reference-rail-card flex min-h-96 shrink-0 flex-col border border-black/18 bg-white/45 p-6">
+                <Quote aria-hidden="true" className="h-5 w-5 shrink-0 text-[#db0066]" />
+                <blockquote className="mt-5 text-lg font-medium leading-8 text-[#080908]">
+                  {renderEmphasizedText(reference.quote, reference.emphasis)}
+                </blockquote>
+                <figcaption className="mt-auto pt-8">
+                  <p className="text-base font-black">{reference.name}</p>
+                  <p className="mt-1 text-xs font-semibold leading-5 text-black/60">{reference.role} · {reference.organization}</p>
+                  {reference.letterHref ? (
+                    <a href={reference.letterHref} target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-11 items-center gap-2 border border-black/24 px-3 py-2 font-mono text-[10px] font-black uppercase transition hover:bg-[#db0066] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#db0066]">
+                      View full letter <ArrowUpRight size={14} />
                     </a>
                   ) : null}
-                </div>
-                <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                  {references.map((reference) => (
-                    <figure key={reference.id} className="border border-black/18 bg-white/45 p-6">
-                      <Quote aria-hidden="true" className="h-5 w-5 text-[#db0066]" />
-                      <blockquote className="mt-5 text-lg font-medium leading-8 text-[#080908]">
-                        {renderEmphasizedText(reference.quote, reference.emphasis)}
-                      </blockquote>
-                    </figure>
-                  ))}
-                </div>
-              </div>
-            );
-          }) : null}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </div>
     </section>
