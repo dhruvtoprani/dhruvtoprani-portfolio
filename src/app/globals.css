@@ -107,7 +107,7 @@ body {
 }
 
 .reference-rail {
-  scroll-snap-type: x mandatory;
+  scroll-behavior: auto;
   scrollbar-color: #db0066 transparent;
   scrollbar-width: thin;
 }
