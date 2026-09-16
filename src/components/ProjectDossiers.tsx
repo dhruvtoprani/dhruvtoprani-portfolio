@@ -238,6 +238,7 @@ export function ProjectDossiers() {
                               fill
                               sizes="(max-width: 1024px) 100vw, 62vw"
                               className="object-cover object-left-top"
+                              style={project.imagePosition ? { objectPosition: project.imagePosition } : undefined}
                             />
                           </div>
                         ) : null}

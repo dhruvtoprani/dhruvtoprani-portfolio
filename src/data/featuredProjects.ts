@@ -6,6 +6,7 @@ export type FeaturedProject = {
   stack: string[];
   image?: string;
   imageAlt?: string;
+  imagePosition?: string;
   metric?: string;
   metricLabel?: string;
   github?: string;
@@ -67,6 +68,9 @@ export const featuredProjects: FeaturedProject[] = [
     description:
       "Designed and prototyped a novel server-rack, secured a pilot from the Director of MSU ICER, and won first place at the 2DAY Venture Challenge.",
     stack: ["Hardware Prototyping", "Product Design", "Pilot Management"],
+    image: "/work/hexaflow-team.jpeg",
+    imageAlt: "HexaFlow team celebrating first place at the 2DAY Venture Challenge in front of the winner announcement",
+    imagePosition: "center 35%",
     metric: "1st place",
     metricLabel: "2DAY Venture Challenge"
   },
