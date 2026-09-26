@@ -35,6 +35,21 @@ export const featuredProjects: FeaturedProject[] = [
     demo: "https://gitstrata.vercel.app"
   },
   {
+    name: "ResumeCheck",
+    category: "Document Intelligence / Privacy Utility",
+    hook: "Catch resume parsing failures before an application system does.",
+    description:
+      "Built and launched from a live user pain point: a browser-only PDF and DOCX utility that exposes extracted text, runs eight deterministic parsing checks, and returns evidence-based fixes without uploading resume contents.",
+    stack: ["JavaScript", "Vite", "PDF.js", "Mammoth", "Vercel Analytics"],
+    image: "/work/resumecheck-home.jpg",
+    imageAlt:
+      "ResumeCheck interface for checking the extracted text behind a PDF or DOCX resume",
+    metric: "2,396 users",
+    metricLabel: "First 12 hours / ~5,000 impressions",
+    github: "https://github.com/dhruvtoprani/resume-check",
+    demo: "https://get-resumecheck.vercel.app"
+  },
+  {
     name: "RatRadar NYC",
     category: "Civic Intelligence / Machine Learning",
     hook: "Predict next-week rodent complaint surges across 177 NYC ZIP areas.",

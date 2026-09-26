@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { ReactNode } from "react";
@@ -95,6 +96,7 @@ export default function RootLayout({
         <SignalStrip />
         <SystemsHeader />
         {children}
+        <Analytics />
       </body>
     </html>
   );
