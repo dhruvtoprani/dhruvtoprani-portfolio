@@ -1,7 +1,7 @@
 "use client";
 
-import { ArrowDown, ArrowUpRight, CircleDot, Quote } from "lucide-react";
-import type { CSSProperties, PointerEvent, ReactNode } from "react";
+import { ArrowDown, ArrowUpRight, Quote } from "lucide-react";
+import type { CSSProperties, PointerEvent } from "react";
 import { useRef } from "react";
 
 import { ClipLine } from "@/components/KineticText";
@@ -19,33 +19,6 @@ const heroReference = managerReferences.find(
 );
 const heroCtaClass =
   "inline-flex min-h-12 shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-md px-4 py-3 text-sm font-bold text-[#08080b] transition active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:px-3 xl:px-4";
-
-function emphasizeReference(text: string, phrases: string[]) {
-  const matches = phrases
-    .map((phrase) => {
-      const start = text.indexOf(phrase);
-      return { end: start + phrase.length, phrase, start };
-    })
-    .filter(({ start }) => start >= 0)
-    .sort((first, second) => first.start - second.start);
-  const parts: ReactNode[] = [];
-  let cursor = 0;
-
-  matches.forEach(({ end, phrase, start }) => {
-    if (start < cursor) return;
-    if (start > cursor) parts.push(text.slice(cursor, start));
-
-    parts.push(
-      <strong key={`${start}-${phrase}`} className="font-black text-white">
-        {text.slice(start, end)}
-      </strong>
-    );
-    cursor = end;
-  });
-
-  if (cursor < text.length) parts.push(text.slice(cursor));
-  return parts.length > 0 ? parts : text;
-}
 
 export function SystemsHero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -73,37 +46,16 @@ export function SystemsHero() {
         } as SpotlightStyle
       }
     >
-      <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-11rem)] max-w-[1440px] flex-col">
-        <Reveal className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[10px] font-bold uppercase text-white/42 md:text-xs">
-          <span className="inline-flex items-center gap-2 text-[#d8ff55]">
-            <CircleDot className="h-3 w-3" />
-            Open to full-time positions May 2027
-          </span>
-          <span aria-hidden="true">/</span>
-          <span className="text-[#59f6ff]">Product · Program · Operations</span>
-          <span aria-hidden="true">/</span>
-          <span className="text-[#ff3ca6]">Open to relocation</span>
-        </Reveal>
-
-        <div className="flex flex-1 flex-col justify-center py-12 md:py-9">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-11rem)] max-w-[1440px] flex-col justify-center py-12 md:py-9">
           <h1 className="font-display max-w-[1320px] whitespace-nowrap text-[clamp(2.2rem,11.5vw,3.4rem)] font-black leading-[0.82] text-white md:text-[clamp(3.4rem,11vw,9.5rem)]">
             <ClipLine delay={0.02}>
               Dhruv <span className="text-[#ff3ca6]">Toprani</span>
             </ClipLine>
           </h1>
 
-          <Reveal delay={0.08} className="mt-7 max-w-[1240px]">
-            <p className="text-[clamp(1.35rem,2.8vw,2.8rem)] font-semibold leading-[1.08] text-white/48">
-              <strong className="font-black text-white">
-                Proven track record of success
-              </strong>{" "}
-              in fast-paced environments at varying scale.
-            </p>
-          </Reveal>
-
           <Reveal
-            delay={0.12}
-            className="mt-6 flex flex-wrap gap-3 md:flex-nowrap"
+            delay={0.08}
+            className="mt-10 flex flex-wrap gap-3"
           >
             <a
               href="#projects"
@@ -114,14 +66,14 @@ export function SystemsHero() {
             </a>
             <a
               href="#experience"
-              className={`${heroCtaClass} bg-[#59f6ff] hover:bg-white`}
+              className={`${heroCtaClass} bg-[#d8ff55] hover:bg-white`}
             >
               Recent experience
               <ArrowDown className="h-4 w-4" />
             </a>
             <a
               href="#references"
-              className={`${heroCtaClass} bg-[#ff3ca6] hover:bg-white`}
+              className={`${heroCtaClass} bg-[#d8ff55] hover:bg-white`}
             >
               View References
               <ArrowDown className="h-4 w-4" />
@@ -130,81 +82,31 @@ export function SystemsHero() {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
-              className={`${heroCtaClass} bg-white hover:bg-[#0a66c2] hover:text-white`}
+              className={`${heroCtaClass} bg-[#d8ff55] hover:bg-[#0a66c2] hover:text-white`}
             >
               LinkedIn
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </Reveal>
 
-          <Reveal
-            delay={0.14}
-            className="mt-6 grid gap-x-8 gap-y-6 border-t border-white/12 pt-6 md:grid-cols-[minmax(0,1fr)_minmax(19rem,28rem)] md:gap-x-12"
-          >
+          <Reveal delay={0.12} className="mt-8 border-t border-white/12 pt-6">
             {heroReference ? (
-              <figure className="border-t border-white/12 pt-5 md:col-start-2 md:row-start-1 md:self-start md:border-l md:border-t-0 md:pl-6 md:pt-0">
+              <figure className="flex max-w-5xl items-start gap-4">
                 <Quote
-                  className="h-5 w-5 text-[#ff3ca6]"
+                  className="mt-0.5 h-5 w-5 shrink-0 text-[#ff3ca6]"
                   aria-hidden="true"
                 />
-                <blockquote className="mt-4 text-base font-medium leading-7 text-white/72 md:text-lg md:leading-8">
-                  {emphasizeReference(
-                    heroReference.quote,
-                    heroReference.emphasis
-                  )}
-                </blockquote>
-                <figcaption className="mt-4 flex flex-wrap items-end justify-between gap-4">
-                  <span className="text-sm leading-6 text-white/48">
-                    <strong className="block font-bold text-white/82">
-                      {heroReference.name}
-                    </strong>
-                    {heroReference.role} · {heroReference.organization}
+                <blockquote className="text-base font-medium leading-7 text-white/72 md:text-lg md:leading-8">
+                  <strong className="font-black text-white">
+                    Dhruv consistently exceeded expectations.
+                  </strong>{" "}
+                  <span className="text-white/48">
+                    {heroReference.name} · {heroReference.organization}
                   </span>
-                  <a
-                    href="#references"
-                    className="inline-flex min-h-11 items-center gap-2 font-mono text-xs font-black uppercase text-[#ff3ca6] transition hover:text-white active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ff3ca6]"
-                  >
-                    View more references
-                    <ArrowDown className="h-4 w-4" />
-                  </a>
-                </figcaption>
+                </blockquote>
               </figure>
             ) : null}
-
-            <div className="max-w-3xl md:col-start-1 md:row-start-1 md:flex md:h-full md:flex-col md:pr-8">
-              <p className="text-[clamp(1.5rem,2.35vw,2.35rem)] font-semibold leading-[1.08] text-white/56">
-                <strong className="font-black text-white">
-                  Honors Computer Engineering
-                </strong>
-                <strong className="mt-2 block font-bold text-white/58">
-                  Michigan State University
-                </strong>
-                <span className="mt-3 block font-mono text-xs font-bold uppercase text-white/42">
-                  Graduating May 2027
-                </span>
-              </p>
-
-              <dl className="mt-7 grid gap-5 border-t border-white/12 pt-5 sm:grid-cols-2 md:mt-auto">
-                <div>
-                  <dt className="font-mono text-[10px] font-bold uppercase text-white/42">
-                    Minor
-                  </dt>
-                  <dd className="mt-2 text-lg font-extrabold leading-tight text-white/88">
-                    {profile.education.minor}
-                  </dd>
-                </div>
-                <div className="sm:border-l sm:border-white/12 sm:pl-5">
-                  <dt className="font-mono text-[10px] font-bold uppercase text-white/42">
-                    Concentration
-                  </dt>
-                  <dd className="mt-2 text-lg font-extrabold leading-tight text-white/88">
-                    Robotics &amp; Automation
-                  </dd>
-                </div>
-              </dl>
-            </div>
           </Reveal>
-        </div>
       </div>
     </section>
   );
