@@ -96,35 +96,6 @@ body {
   pointer-events: none;
 }
 
-.hero-monogram {
-  position: absolute;
-  inset: 0 -3vw 0 auto;
-  display: flex;
-  align-items: center;
-  color: transparent;
-  font-family:
-    "Arial Black",
-    "Helvetica Neue",
-    "Geist",
-    ui-sans-serif,
-    system-ui,
-    sans-serif;
-  font-size: clamp(22rem, 46vw, 46rem);
-  font-weight: 900;
-  line-height: 0.72;
-  pointer-events: none;
-  user-select: none;
-  -webkit-text-stroke: 1px rgb(255 60 166 / 13%);
-}
-
-@media (max-width: 767px) {
-  .hero-monogram {
-    inset: 3rem -25vw auto auto;
-    font-size: 28rem;
-    opacity: 0.58;
-  }
-}
-
 @keyframes skills-marquee {
   from {
     transform: translateX(0);

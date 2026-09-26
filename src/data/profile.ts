@@ -12,7 +12,7 @@ export const profile = {
     concentration: "Robotics & Automation"
   },
   location: "Michigan / New Jersey / UAE",
-  availability: "Open to full-time positions May 2027",
+  availability: "Open to full-time opportunities · May 2027",
   githubUsername: "dhruvtoprani",
   github: "https://github.com/dhruvtoprani",
   linkedin: "https://www.linkedin.com/in/dhruvtoprani",
