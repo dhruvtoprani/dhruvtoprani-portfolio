@@ -24,7 +24,7 @@ export function ExperienceLedger() {
   return (
     <section
       id="experience"
-      className="scroll-mt-16 bg-[#4b00b5] px-5 py-24 text-white md:px-8 md:py-32"
+      className="scroll-mt-16 bg-[#4b00b5] px-5 pb-24 pt-12 text-white md:px-8 md:pb-32 md:pt-16"
     >
       <div className="mx-auto max-w-[1600px]">
         <SectionHeader

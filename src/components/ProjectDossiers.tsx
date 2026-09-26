@@ -97,7 +97,7 @@ export function ProjectDossiers() {
       id="projects"
       className="scroll-mt-16 bg-[#d8ff55] text-[#080908]"
     >
-      <div className="mx-auto max-w-[1600px] px-5 py-24 md:px-8 md:py-32">
+      <div className="mx-auto max-w-[1600px] px-5 pb-24 pt-12 md:px-8 md:pb-32 md:pt-16">
         <SectionHeader
           eyebrow="SELECTED PROJECTS / 02"
           borderClassName="border-black"

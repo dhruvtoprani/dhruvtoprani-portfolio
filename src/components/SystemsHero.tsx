@@ -46,6 +46,9 @@ export function SystemsHero() {
         } as SpotlightStyle
       }
     >
+      <div className="hero-monogram" aria-hidden="true">
+        DT
+      </div>
       <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-11rem)] max-w-[1440px] flex-col justify-center py-12 md:py-9">
           <h1 className="font-display max-w-[1320px] whitespace-nowrap text-[clamp(2.2rem,11.5vw,3.4rem)] font-black leading-[0.82] text-white md:text-[clamp(3.4rem,11vw,9.5rem)]">
             <ClipLine delay={0.02}>

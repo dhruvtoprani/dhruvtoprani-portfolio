@@ -6,7 +6,7 @@ export function RecognitionLedger() {
   return (
     <section
       id="awards"
-      className="scroll-mt-16 bg-[#00513f] px-5 py-24 text-white md:px-8 md:py-32"
+      className="scroll-mt-16 bg-[#00513f] px-5 pb-24 pt-12 text-white md:px-8 md:pb-32 md:pt-16"
     >
       <div className="mx-auto max-w-[1600px]">
         <SectionHeader

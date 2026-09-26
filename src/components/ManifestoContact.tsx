@@ -8,7 +8,7 @@ export function ManifestoContact() {
   return (
     <section
       id="contact"
-      className="scroll-mt-16 bg-[#b9004d] px-5 pb-8 pt-24 text-white md:px-8 md:pb-10 md:pt-32"
+      className="scroll-mt-16 bg-[#b9004d] px-5 pb-8 pt-12 text-white md:px-8 md:pb-10 md:pt-16"
     >
       <div className="mx-auto max-w-[1600px]">
         <SectionHeader
