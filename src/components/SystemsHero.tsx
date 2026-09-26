@@ -91,14 +91,18 @@ export function SystemsHero() {
 
           <Reveal delay={0.12} className="mt-8 border-t border-white/12 pt-6">
             {heroReference ? (
-              <figure className="flex max-w-5xl items-start gap-4">
+              <figure className="flex items-start gap-4">
                 <Quote
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#ff3ca6]"
                   aria-hidden="true"
                 />
                 <blockquote className="text-base font-medium leading-7 text-white/72 md:text-lg md:leading-8">
                   <strong className="font-black text-white">
-                    Dhruv consistently exceeded expectations.
+                    Dhruv consistently exceeded expectations
+                  </strong>
+                  , demonstrating a rare and highly valuable combination of{" "}
+                  <strong className="font-black text-white">
+                    technical acumen and exceptional interpersonal skills.
                   </strong>{" "}
                   <span className="text-white/48">
                     {heroReference.name} · {heroReference.organization}
