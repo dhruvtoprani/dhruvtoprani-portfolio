@@ -4,7 +4,6 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { ReactNode } from "react";
 
-import { SignalStrip } from "@/components/SignalStrip";
 import { SystemsHeader } from "@/components/SystemsHeader";
 import { profile } from "@/data/profile";
 
@@ -76,7 +75,6 @@ export default function RootLayout({
       className={`${GeistSans.variable} ${GeistMono.variable}`}
     >
       <body className="font-sans antialiased">
-        <SignalStrip />
         <SystemsHeader />
         {children}
         <Analytics />

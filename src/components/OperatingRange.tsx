@@ -33,33 +33,33 @@ export function OperatingRange() {
           <div>
             <div className="py-12 lg:min-h-80 lg:border-r lg:border-white/30 lg:pr-10">
               <p className="font-mono text-xs font-bold text-white/55">
-                01 / IMPACT
+                01 / VALUE
               </p>
               <h3 className="mt-12 text-4xl font-black md:text-5xl">
-                <StaggerWords text="Sustainability" />
+                <StaggerWords text="First Principles" />
               </h3>
               <p className="mt-5 max-w-md text-2xl font-bold leading-9 text-white/68">
-                Cleaner energy. Resilient infrastructure.
+                Strip problems to fundamentals. Build the answer back up.
               </p>
             </div>
           </div>
           <div className="border-t border-white/30 lg:border-t-0">
             <div className="py-12 lg:min-h-80 lg:border-r lg:border-white/30 lg:px-10">
               <p className="font-mono text-xs font-bold text-white/55">
-                02 / IMPACT
+                02 / VALUE
               </p>
               <h3 className="mt-12 text-4xl font-black md:text-5xl">
-                <StaggerWords text="Community" />
+                <StaggerWords text="Hard Things" />
               </h3>
               <p className="mt-5 max-w-md text-2xl font-bold leading-9 text-white/68">
-                Better access. Better public outcomes.
+                Choose difficult, consequential work. Stay with it.
               </p>
             </div>
           </div>
           <div className="border-t border-white/30 lg:border-t-0">
             <div className="py-12 lg:min-h-80 lg:pl-10">
               <p className="font-mono text-xs font-bold text-white/55">
-                03 / IMPACT
+                03 / VALUE
               </p>
               <h3 className="mt-12 text-4xl font-black md:text-5xl">
                 <StaggerWords text="Craft" />

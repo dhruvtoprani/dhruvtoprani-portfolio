@@ -67,7 +67,7 @@ export function SystemsHeader() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-1 z-50 border-b border-white/10 bg-[#080908]/58 text-white shadow-[0_18px_42px_rgb(0_0_0_/_0.22)] backdrop-blur-2xl backdrop-saturate-150">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#080908]/58 text-white shadow-[0_18px_42px_rgb(0_0_0_/_0.22)] backdrop-blur-2xl backdrop-saturate-150">
       <div
         aria-hidden="true"
         className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-[#d8ff55] transition-transform duration-150 ease-out"
